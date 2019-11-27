@@ -1,7 +1,25 @@
-# Mục lục
 
 # Cài đặt DNS server
 
+# Mục lục
+
+[1.Chuẩn bị](#1)
+
+[2.Cài đặt DNS Server Master](#2)
+
+[3.Cấu hình DNS Server](#3)
+
+[4.Khởi chạy dịch vụ DNS Server](#4)
+
+[5.Cấu hình Firewall](#5)
+
+[6.Tiến hành Test thử DNS Server để đảm bảo không có lỗi](#6)
+
+[7.Tiến hành Add DNS Server vào file cấu hình card mạng](#7)
+
+[8.Test DNS Server](#8)	
+
+<a name="1" ></a>
 # 1.Chuẩn bị:
 - Để chuẩn bị lab này ,người viết sử dụng 2 máy.Trong đó 1 máy làm DNS server chính,một máy làm client
 - Máy 1:DNS Server Master :
@@ -13,11 +31,13 @@
   + Hệ điều hành : Win 7 Ultimate
   + Hostname : client.anninhmang.edu.vn
   + IP : 192.168.74.138/255.255.255.0
-  
+ 
+<a name="2" ></a> 
 #  2.Cài đặt DNS Server Master :
 
 - Trước hết cần cài đặt gói bind vào máy: ` yum install bind bind-utils –y `
 
+<a name="3" ></a>
 ## 3.Cấu hình DNS Server :
 
 - Tìm và Edit file ‘/etc/named.conf’: `vi /etc/named.conf  `
@@ -109,11 +129,13 @@
 
         138     IN  PTR         client.anninhmang.edu.vn. `
 
+<a name="4" ></a>
 # 4.Khởi chạy dịch vụ DNS Server :
 - systemctl enable named
 
 - systemctl start named
 
+<a name="5" ></a>
 # 5.Cấu hình Firewall :
 
 - Mở Port 53 trên Firewall để dịch vụ DNS có thể được thông qua :
@@ -122,6 +144,7 @@
   
 - Restart lại Firewall để thay đổi có hiệu lực : ` firewall-cmd –reload `
 
+<a name="6" ></a>
 # 6.Tiến hành Test thử DNS Server để đảm bảo không có lỗi :
 
 - Chạy dòng lệnh để check DNS Server : `named-checkconf /etc/named.conf`
@@ -138,7 +161,8 @@
   + ` zone anninhmang.edu.vn/IN: loaded serial 2011071001
 
      OK `
-	 
+
+<a name="7" ></a>
 # 7.Tiến hành Add DNS Server vào file cấu hình card mạng :
 
 - Ta tiến hành sửa file: ` vi /etc/sysconfig/network-scripts/ifcfg-ens33 `
@@ -148,6 +172,7 @@
 
 - Thêm vào địa chỉ IP của Name Server : ` nameserver      192.168.74.139 `
 
+<a name="8" ></a>
 # 8.Test DNS Server	
 
 - chạy dòng lệnh: `dig masterdns.anninhmang.edu.vn`
