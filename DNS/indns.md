@@ -95,7 +95,7 @@
 
       86400       ;Minimum TTL
 
-    )
+      )
 
       @       IN  NS          masterdns.anninhmang.edu.vn.
 
@@ -103,11 +103,11 @@
 
       masterdns       IN  A   192.168.74.139
 
-	  client          IN  A   192.168.74.138
+      client          IN  A   192.168.74.138
 
-	  139     IN  PTR         masterdns.anninhmang.edu.vn.
+      139     IN  PTR         masterdns.anninhmang.edu.vn.
 
-	  138     IN  PTR         client.anninhmang.edu.vn. `
+      138     IN  PTR         client.anninhmang.edu.vn. `
 
 # 4.Khởi chạy dịch vụ DNS Server :
 - systemctl enable named
