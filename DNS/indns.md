@@ -38,7 +38,7 @@
 - Trước hết cần cài đặt gói bind vào máy: ` yum install bind bind-utils –y `
 
 <a name="3" ></a>
-## 3.Cấu hình DNS Server :
+# 3.Cấu hình DNS Server :
 
 - Tìm và Edit file ‘/etc/named.conf’: `vi /etc/named.conf  `
 - Ta tìm đến ` listen-on port 53 { 127.0.0.1; }; ` và sửa lại thành:  
