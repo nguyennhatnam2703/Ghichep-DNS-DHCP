@@ -29,7 +29,7 @@
 	   option broadcast-address 192.168.74.255;
        } . `
 	   
-     + ![]( /image/dhcp1.PNG)   
+- ![]( /image/dhcp1.PNG)         
 	   
 - Giải thích file cấu hình:
   + ddns-update-style none; : Không cho cập nhật DNS động
