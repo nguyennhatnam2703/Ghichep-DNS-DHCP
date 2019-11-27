@@ -84,8 +84,8 @@ hoặc khi quá tải.
 - Những domain và subdomain mà DNS Server quản lý gọi là Zone.
 =>> 1 zone có thể bao gồm 1 domain và một hoặc nhiều subdomain.
 - Thông tin DNS zone bao gồm:
- + tên Host
- + địa chỉ IP được lưu trong DNS server.
+  + tên Host
+  + địa chỉ IP được lưu trong DNS server.
 - Zone file : Lưu thông tin của Zone, có thể ở dạng text hoặc trong Active Dicrectory.
 
 <a name="7.1"></a>
@@ -98,6 +98,9 @@ hoặc khi quá tải.
 
 <a name="8"></a>
 # 8.Cách DNS server hoạt động
+
+- ![]( /image/hddns.png )
+
 - B1:Trước hết chương trình trên máy người sử dụng gửi yêu cầu tìm kiếm địa chỉ IP ứng với tên miền whitehat.vn tới máy chủ quản lý tên miền (name server)
  cục bộ thuộc mạng của nó
 - B2:Máy chủ tên miền cục bộ này kiểm tra trong cơ sở dữ liệu của nó có chứa cơ sở dữ liệu chuyển đổi từ tên miền sang địa chỉ IP của tên miền mà người sử
@@ -113,10 +116,15 @@ hoặc khi quá tải.
 - B10:Máy chủ tên miền cục bộ chuyển thông tin tìm được đến máy của người sử dụng. Người sử dụng dùng địa chỉ IP này để kết nối đến server chứa trang web có
  địa chỉ whitehat.vn 
  # Tham khảo:
- - http://svuit.vn/threads/chapter-4-3-dns-server-va-dnz-zone-part-3-252/
- - https://whitehat.vn/threads/cach-domain-name-system-dns-hoat-dong.472/
- -  cai dat https://anninhmang.edu.vn/cau-hinh-dns-server-tren-centos/
- - https://github.com/hocchudong/ghichep-DNS/blob/master/docs/dns-install.md
+ [1] http://svuit.vn/threads/chapter-4-3-dns-server-va-dnz-zone-part-3-252/
+ 
+ [2] https://whitehat.vn/threads/cach-domain-name-system-dns-hoat-dong.472/
+ 
+ [3] https://anninhmang.edu.vn/cau-hinh-dns-server-tren-centos/
+ 
+ [4] https://github.com/hocchudong/ghichep-DNS/blob/master/docs/dns-install.md
+ 
+ [5] https://vi.wikipedia.org/wiki/H%E1%BB%87_th%E1%BB%91ng_ph%C3%A2n_gi%E1%BA%A3i_t%C3%AAn_mi%E1%BB%81n#T.E1.BB.95ng_quan
  
  
   
