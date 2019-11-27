@@ -52,31 +52,31 @@
 - Tạo vùng Forward Zone :
   + Tạo file forward.anninhmang trong thư mục ‘/var/named’ : ` vi /var/named/forward.anninhmang `
   + Thêm vào những dòng này :
-  ` $TTL 86400
+  ``` $TTL 86400
 
-  @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
+    @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
 
-  2011071001  ;Serial
+    2011071001  ;Serial
 
-  3600        ;Refresh
+    3600        ;Refresh
 
-  1800        ;Retry
+    1800        ;Retry
 
-  604800      ;Expire
+    604800      ;Expire
 
-  86400       ;Minimum TTL
+    86400       ;Minimum TTL
 
   )
 
-  @       IN  NS          masterdns.anninhmang.edu.vn.
+    @       IN  NS          masterdns.anninhmang.edu.vn.
 
-  @       IN  A           192.168.74.139
+    @       IN  A           192.168.74.139
 
-  @       IN  A           192.168.74.138
+    @       IN  A           192.168.74.138
 
-  masterdns       IN  A   192.168.74.139
+    masterdns       IN  A   192.168.74.139
 
-  client          IN  A   192.168.74.138  `
+    client          IN  A   192.168.74.138  ```
   
 –  Tạo vùng Reserve Zone :
    + Tạo file reserve.anninhmang ở trong thư mục ‘/var/named’ : ` vi /var/named/reverse.anninhmang `
