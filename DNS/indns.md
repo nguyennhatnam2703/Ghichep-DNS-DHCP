@@ -1,7 +1,25 @@
-# Mục lục
 
 # Cài đặt DNS server
 
+# Mục lục
+
+[1.Chuẩn bị](#1)
+
+[2.Cài đặt DNS Server Master](#2)
+
+[3.Cấu hình DNS Server](#3)
+
+[4.Khởi chạy dịch vụ DNS Server](#4)
+
+[5.Cấu hình Firewall](#5)
+
+[6.Tiến hành Test thử DNS Server để đảm bảo không có lỗi](#6)
+
+[7.Tiến hành Add DNS Server vào file cấu hình card mạng](#7)
+
+[8.Test DNS Server](#8)	
+
+<a name="1" ></a>
 # 1.Chuẩn bị:
 - Để chuẩn bị lab này ,người viết sử dụng 2 máy.Trong đó 1 máy làm DNS server chính,một máy làm client
 - Máy 1:DNS Server Master :
@@ -13,12 +31,14 @@
   + Hệ điều hành : Win 7 Ultimate
   + Hostname : client.anninhmang.edu.vn
   + IP : 192.168.74.138/255.255.255.0
-  
+ 
+<a name="2" ></a> 
 #  2.Cài đặt DNS Server Master :
 
 - Trước hết cần cài đặt gói bind vào máy: ` yum install bind bind-utils –y `
 
-## 3.Cấu hình DNS Server :
+<a name="3" ></a>
+# 3.Cấu hình DNS Server :
 
 - Tìm và Edit file ‘/etc/named.conf’: `vi /etc/named.conf  `
 - Ta tìm đến ` listen-on port 53 { 127.0.0.1; }; ` và sửa lại thành:  
@@ -28,92 +48,94 @@
 - Cấu hình liên kết zone files: Việc cấu hình này nhắm mục đích tạo ra liên kết tới một zone để khai báo cho các tên miền cho phép DNS Server phân giải tên miền
  từ các địa chỉ IP :
   +  sau đó thêm nội dung sau ở bên ngoài block options
-  + ` zone "anninhmang.edu.vn" IN {
+    ``` zone "anninhmang.edu.vn" IN {
 
-      type master;
+        type master;
 
-      file "forward.anninhmang";
+        file "forward.anninhmang";
 
-      allow-update { none; };
+        allow-update { none; };
 
-      };
+        };
+ 
+        zone "74.168.192.in-addr.arpa" IN {
 
-      zone "74.168.192.in-addr.arpa" IN {
+        type master;
 
-      type master;
+        file "reverse.anninhmang";
 
-      file "reverse.anninhmang";
+        allow-update { none; };
 
-      allow-update { none; };
-
-      }; `
+        }; ```
 - Tiến hành tạo Zone File : Như bạn đã thấy ở trên file ‘/etc/named.conf’, chúng ta có thêm vào vài dòng trong đó có đề cập đến 2 file Forward và Reserve :
 
 - Tạo vùng Forward Zone :
   + Tạo file forward.anninhmang trong thư mục ‘/var/named’ : ` vi /var/named/forward.anninhmang `
   + Thêm vào những dòng này :
-  ` $TTL 86400
+  ``` $TTL 86400
 
-  @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
+    @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
 
-  2011071001  ;Serial
+    2011071001  ;Serial
 
-  3600        ;Refresh
+    3600        ;Refresh
 
-  1800        ;Retry
+    1800        ;Retry
 
-  604800      ;Expire
+    604800      ;Expire
 
-  86400       ;Minimum TTL
+    86400       ;Minimum TTL
 
   )
 
-  @       IN  NS          masterdns.anninhmang.edu.vn.
+    @       IN  NS          masterdns.anninhmang.edu.vn.
 
-  @       IN  A           192.168.74.139
+    @       IN  A           192.168.74.139
 
-  @       IN  A           192.168.74.138
+    @       IN  A           192.168.74.138
 
-  masterdns       IN  A   192.168.74.139
+    masterdns       IN  A   192.168.74.139
 
-  client          IN  A   192.168.74.138  `
+    client          IN  A   192.168.74.138  ```
   
 –  Tạo vùng Reserve Zone :
    + Tạo file reserve.anninhmang ở trong thư mục ‘/var/named’ : ` vi /var/named/reverse.anninhmang `
    + Thêm vào những dòng sau :
-    ` $TTL 86400
+      ``` $TTL 86400
 
-      @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
+        @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
 
-      2011071001  ;Serial
+        2011071001  ;Serial
 
-      3600        ;Refresh
+        3600        ;Refresh
 
-      1800        ;Retry
+        1800        ;Retry
 
-      604800      ;Expire
+        604800      ;Expire
 
-      86400       ;Minimum TTL
+        86400       ;Minimum TTL
 
-    )
+        )
 
-      @       IN  NS          masterdns.anninhmang.edu.vn.
+        @       IN  NS          masterdns.anninhmang.edu.vn.
 
-      @       IN  PTR         anninhmang.edu.vn.
+        @       IN  PTR         anninhmang.edu.vn.
 
-      masterdns       IN  A   192.168.74.139
+        masterdns       IN  A   192.168.74.139
 
-	  client          IN  A   192.168.74.138
+        client          IN  A   192.168.74.138
 
-	  139     IN  PTR         masterdns.anninhmang.edu.vn.
+        139     IN  PTR         masterdns.anninhmang.edu.vn.
 
-	  138     IN  PTR         client.anninhmang.edu.vn. `
+        138     IN  PTR         client.anninhmang.edu.vn. `
 
+<a name="4" ></a>
 # 4.Khởi chạy dịch vụ DNS Server :
 - systemctl enable named
 
 - systemctl start named
 
+<a name="5" ></a>
 # 5.Cấu hình Firewall :
 
 - Mở Port 53 trên Firewall để dịch vụ DNS có thể được thông qua :
@@ -122,6 +144,7 @@
   
 - Restart lại Firewall để thay đổi có hiệu lực : ` firewall-cmd –reload `
 
+<a name="6" ></a>
 # 6.Tiến hành Test thử DNS Server để đảm bảo không có lỗi :
 
 - Chạy dòng lệnh để check DNS Server : `named-checkconf /etc/named.conf`
@@ -138,7 +161,8 @@
   + ` zone anninhmang.edu.vn/IN: loaded serial 2011071001
 
      OK `
-	 
+
+<a name="7" ></a>
 # 7.Tiến hành Add DNS Server vào file cấu hình card mạng :
 
 - Ta tiến hành sửa file: ` vi /etc/sysconfig/network-scripts/ifcfg-ens33 `
@@ -148,6 +172,7 @@
 
 - Thêm vào địa chỉ IP của Name Server : ` nameserver      192.168.74.139 `
 
+<a name="8" ></a>
 # 8.Test DNS Server	
 
 - chạy dòng lệnh: `dig masterdns.anninhmang.edu.vn`
