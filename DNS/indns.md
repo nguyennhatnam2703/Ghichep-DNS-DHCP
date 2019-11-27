@@ -28,25 +28,25 @@
 - Cấu hình liên kết zone files: Việc cấu hình này nhắm mục đích tạo ra liên kết tới một zone để khai báo cho các tên miền cho phép DNS Server phân giải tên miền
  từ các địa chỉ IP :
   +  sau đó thêm nội dung sau ở bên ngoài block options
-  + ` zone "anninhmang.edu.vn" IN {
+    ``` zone "anninhmang.edu.vn" IN {
 
-      type master;
+        type master;
 
-      file "forward.anninhmang";
+        file "forward.anninhmang";
 
-      allow-update { none; };
+        allow-update { none; };
 
-      };
+        };
+ 
+        zone "74.168.192.in-addr.arpa" IN {
 
-      zone "74.168.192.in-addr.arpa" IN {
+        type master;
 
-      type master;
+        file "reverse.anninhmang";
 
-      file "reverse.anninhmang";
+        allow-update { none; };
 
-      allow-update { none; };
-
-      }; `
+        }; ```
 - Tiến hành tạo Zone File : Như bạn đã thấy ở trên file ‘/etc/named.conf’, chúng ta có thêm vào vài dòng trong đó có đề cập đến 2 file Forward và Reserve :
 
 - Tạo vùng Forward Zone :
