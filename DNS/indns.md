@@ -81,33 +81,33 @@
 –  Tạo vùng Reserve Zone :
    + Tạo file reserve.anninhmang ở trong thư mục ‘/var/named’ : ` vi /var/named/reverse.anninhmang `
    + Thêm vào những dòng sau :
-    ` $TTL 86400
+      ``` $TTL 86400
 
-      @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
+        @   IN  SOA     masterdns.anninhmang.edu.vn. root.anninhmang.edu.vn. (
 
-      2011071001  ;Serial
+        2011071001  ;Serial
 
-      3600        ;Refresh
+        3600        ;Refresh
 
-      1800        ;Retry
+        1800        ;Retry
 
-      604800      ;Expire
+        604800      ;Expire
 
-      86400       ;Minimum TTL
+        86400       ;Minimum TTL
 
-      )
+        )
 
-      @       IN  NS          masterdns.anninhmang.edu.vn.
+        @       IN  NS          masterdns.anninhmang.edu.vn.
 
-      @       IN  PTR         anninhmang.edu.vn.
+        @       IN  PTR         anninhmang.edu.vn.
 
-      masterdns       IN  A   192.168.74.139
+        masterdns       IN  A   192.168.74.139
 
-      client          IN  A   192.168.74.138
+        client          IN  A   192.168.74.138
 
-      139     IN  PTR         masterdns.anninhmang.edu.vn.
+        139     IN  PTR         masterdns.anninhmang.edu.vn.
 
-      138     IN  PTR         client.anninhmang.edu.vn. `
+        138     IN  PTR         client.anninhmang.edu.vn. `
 
 # 4.Khởi chạy dịch vụ DNS Server :
 - systemctl enable named
