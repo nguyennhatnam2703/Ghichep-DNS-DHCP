@@ -76,16 +76,16 @@
 
 - ![]( /image/dhcpreplay.jpg)
 
-- DHCP Relay là gì:
+- `DHCP Relay` là gì:
   + DHCP Relay Agent là một cấu hình được đặt cho máy tính hoặc một Router tiếp nhận các thông tin yêu cầu cấp phát IP của clients và chuyển các thông tin này
   đến DHCP server
 
-- Tại sao phải sử dụng DHCP Relay Agent ?
+- Tại sao phải sử dụng `DHCP Relay Agent` ?
   + Khi giữa Clients và DHCP server có nhiều mạng khác tương ứng với nhiều router khác thì cần phải cấu hình DHCP Relay Agent vì Clients sử dụng địa chỉ 
   broadcast để quảng bá yêu cầu cấp phát IP, khi gói tin gửi bằng broadcast đến Router thì sẽ bị loại bỏ, do vậy phải có cách để cho các router trung gian 
   chấp nhập những gói tin broadcast này và gửi đến DHCP server, cách này chính là DHCP Relay Agent.
   
-- Ưu diểm của DHCP Relay:
+- Ưu diểm của `DHCP Relay`:
   + Phù hợp với các máy tính thường xuyên di chuyển giữa các lớp mạng.
   + Kết hợp với hệ thống mạng không dây ( Wireless) cung cấp tại các điểm – Hotspot như: nhà ga, sân bay, khách sạn, trường học.
   + Thuận tiện cho việc mở rộng hệ thống mạng.
