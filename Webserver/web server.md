@@ -89,6 +89,20 @@
 - Cài đặt xong thì truy cập vào địa chỉ IP của máy chủ, bạn sẽ thấy trang chào mừng của Apache như thế này:
 - ![]( /image/apache1.PNG)
 
+- Cấu trúc thư mục cấu hình Apache trên Ubuntu:
+  + `conf-available/ `– Thư mục này sẽ chứa các file thiết lập cấu hình sẵn của Apache trên Ubuntu
+  + `conf-enabled/` – Thư mục chứa các file thiết lập cấu hình của Apache trên Ubuntu đang được bật
+  + `mods-available/` – Thư mục chứa các file từng module của Apache trên Ubuntu nhưng chưa được bật
+  + `mods-enabled/ `– Thư mục chứa các file từng module của Apache trên Ubuntu đang được bật.
+  + `site-available/` – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu nhưng chưa được bật.
+  + `site-enabled/` – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu đang được bật
+  + `apache2.conf` – File cấu hình Apache trên Ubuntu.
+  + `envvars` – File thiết lập các biến với giá trị sẵn để sử dụng trong các file cấu hình.
+  + `magic` – File thiết lập của module mod_mime_magic trên Apache.
+  + `ports.conf` – File cấu hình cổng mạng của Apache (mặc định là port 80).
+
+
+
 -Tạo alias cho web site:` sudo vi /var/www/html/test.html`
 
  ![]( /image/test.PNG)
