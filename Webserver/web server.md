@@ -21,6 +21,8 @@
 
 # 3.Hoạt động của máy chủ web
 
+- ![]( /image/mhwebserver.gif)
+
 - Khi bạn nhập URL trên trình duyệt của mình (ví dụ:https://smartcloud.vn/ ), trình duyệt của bạn yêu cầu trang từ web server  và web server sẽ gửi lại trang
 - B1: Trình duyệt phân giải tên miền thành địa chỉ IP
   + Đầu tiên trình duyệt web bạn xác định địa chỉ IP của tên miền https://smartcloud.vn/ trỏ về. Nếu thông tin được lưu trữ sẵn trên bộ nhớ cache thì trình 
