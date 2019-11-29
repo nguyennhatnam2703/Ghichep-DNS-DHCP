@@ -80,7 +80,7 @@
 - Nhược điểm:   
   + cần phải có chi phí đầu tư cao hơn web tĩnh.
   
-# Install apache
+# 5.Install apache
 
 - Cập nhật package: `apt-get update`
 
