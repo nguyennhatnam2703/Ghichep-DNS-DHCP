@@ -79,6 +79,23 @@
   + Web động có tính tương tác với người sử dụng cao
 - Nhược điểm:   
   + cần phải có chi phí đầu tư cao hơn web tĩnh.
+  
+# Install apache
+
+- Cập nhật package: `apt-get update`
+
+- Cài đặt Apache: `apt-get install apache2`
+
+- Cài đặt xong thì truy cập vào địa chỉ IP của máy chủ, bạn sẽ thấy trang chào mừng của Apache như thế này:
+- ![]( /image/apache1.PNG)
+
+-Tạo alias cho web site:` sudo vi /var/www/html/test.html`
+
+ ![]( /image/test.PNG)
+
+- ![]( /image/apache2.PNG)
+  
+
 
 
 
