@@ -21,6 +21,8 @@
 
 # 3.Hoạt động của máy chủ web
 
+- ![]( /image/mhwebserver.gif)
+
 - Khi bạn nhập URL trên trình duyệt của mình (ví dụ:https://smartcloud.vn/ ), trình duyệt của bạn yêu cầu trang từ web server  và web server sẽ gửi lại trang
 - B1: Trình duyệt phân giải tên miền thành địa chỉ IP
   + Đầu tiên trình duyệt web bạn xác định địa chỉ IP của tên miền https://smartcloud.vn/ trỏ về. Nếu thông tin được lưu trữ sẵn trên bộ nhớ cache thì trình 
@@ -79,6 +81,37 @@
   + Web động có tính tương tác với người sử dụng cao
 - Nhược điểm:   
   + cần phải có chi phí đầu tư cao hơn web tĩnh.
+  
+# 5.Install apache
+
+- Cập nhật package: `apt-get update`
+
+- Cài đặt Apache: `apt-get install apache2`
+
+- Cài đặt xong thì truy cập vào địa chỉ IP của máy chủ, bạn sẽ thấy trang chào mừng của Apache như thế này:
+- ![]( /image/apache1.PNG)
+
+- Cấu trúc thư mục cấu hình Apache trên Ubuntu:
+  + `conf-available/ `– Thư mục này sẽ chứa các file thiết lập cấu hình sẵn của Apache trên Ubuntu
+  + `conf-enabled/` – Thư mục chứa các file thiết lập cấu hình của Apache trên Ubuntu đang được bật
+  + `mods-available/` – Thư mục chứa các file từng module của Apache trên Ubuntu nhưng chưa được bật
+  + `mods-enabled/ `– Thư mục chứa các file từng module của Apache trên Ubuntu đang được bật.
+  + `site-available/` – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu nhưng chưa được bật.
+  + `site-enabled/` – Thư mục chứa file cấu hình VirtualHost của Apache trên Ubuntu đang được bật
+  + `apache2.conf` – File cấu hình Apache trên Ubuntu.
+  + `envvars` – File thiết lập các biến với giá trị sẵn để sử dụng trong các file cấu hình.
+  + `magic` – File thiết lập của module mod_mime_magic trên Apache.
+  + `ports.conf` – File cấu hình cổng mạng của Apache (mặc định là port 80).
+
+
+
+-Tạo alias cho web site:` sudo vi /var/www/html/test.html`
+
+ ![]( /image/test.PNG)
+
+- ![]( /image/apache2.PNG)
+  
+
 
 
 
